@@ -427,9 +427,9 @@
 
     <style name="SearchBarStyle">
         <item name="android:layout_margin">@dimen/search_bar_margin</item>
-        <item name="cardCornerRadius">@*android:dimen/config_dialogCornerRadius</item>
+        <item name="cardCornerRadius">32dp</item>
         <item name="enforceMaterialTheme">true</item>
-        <item name="cardElevation">3dp</item>
+        <item name="cardElevation">@null</item>
         <item name="shapeAppearance">@null</item>
     </style>
 
@@ -657,9 +657,9 @@
            parent="@style/AccessibilityDialogButton"></style>
 
     <style name="homepage_spacer_title_style">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">48sp</item>
         <item name="android:textColor">?android:attr/textColorPrimary</item>
-        <item name="android:fontFamily">google-sans-medium</item>
+        <item name="android:fontFamily">google-sans-regular</item>
     </style>
 
     <style name="CardView.Dark">
