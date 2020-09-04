@@ -662,4 +662,14 @@
         <item name="android:fontFamily">google-sans-medium</item>
     </style>
 
+    <style name="CardView.Dark">
+        <item name="cardBackgroundColor">@android:color/transparent</item>
+    </style>
+    <style name="CardView.Light">
+        <item name="cardBackgroundColor">@android:color/transparent</item>
+    </style>
+
+    <style name="CardView">
+        <item name="cardBackgroundColor">@android:color/transparent</item>
+    </style>
 </resources>
