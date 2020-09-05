@@ -46,6 +46,8 @@ import android.view.View.OnLongClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import androidx.preference.Preference;
+import android.util.AttributeSet;
+import android.widget.TextView;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.loader.app.LoaderManager;
@@ -59,6 +61,7 @@ import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.fuelgauge.batterytip.BatteryTipLoader;
 import com.android.settings.fuelgauge.batterytip.BatteryTipPreferenceController;
 import com.android.settings.fuelgauge.batterytip.tips.BatteryTip;
+import com.android.settings.widget.UsageView;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.fuelgauge.EstimateKt;
@@ -66,7 +69,10 @@ import com.android.settingslib.search.SearchIndexable;
 import com.android.settingslib.utils.PowerUtil;
 import com.android.settingslib.utils.StringUtil;
 import com.android.settingslib.widget.LayoutPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceViewHolder;
 
+import com.android.internal.os.BatteryStatsHelper;
 import java.util.Collections;
 import java.util.List;
 
@@ -150,7 +156,13 @@ public class PowerUsageSummary extends PowerUsageBase implements OnLongClickList
                     updateHeaderPreference(batteryInfo);
                     mBatteryInfo = batteryInfo;
                     updateLastFullChargePreference();
-                }
+                    Handler h = new Handler();
+                        h.postDelayed(() -> {
+                            UsageView usageView = (UsageView) mBatteryLayoutPref.findViewById(R.id.battery_usage);
+                            usageView.findViewById(R.id.label_group).setAlpha(.7f);
+                            mBatteryInfo.bindHistory(usageView);
+                        }, 300);
+		}
 
                 @Override
                 public void onLoaderReset(Loader<BatteryInfo> loader) {
